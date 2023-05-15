@@ -1,0 +1,63 @@
+Creating Custom Image for Windows sysadmin Guide
+
+Created by: noirmiles
+
+SOFTWARE NEEDED:
+Windows 11 Installation ISO : https://www.microsoft.com/software-download/windows11
+VMWARE : https://www.vmware.com/products/workstation-player.html<
+WinPE ISO file: https://www.hirensbootcd.org/download/
+AnyBurn: http://www.anyburn.com
+	alt - Image Burn: https://www.imgburn.com
+	
+
+1. Create Windows 10 Installation media with tool
+
+2. Download WinPE (Hiren BootCD)
+
+3. Download Vmware or VirtualBox to allow you to create custom firmware
+
+4. Create and Run Virtual Machine from ISO
+Settings: 120 GB, 4 or 8 GB ram
+
+5. Download Software 
+www.ninite.com to install software quickly (or just install each manually)
+
+6. Shrink Partition
+Disk Management -> C: -> Space to shrink in MB: 60,000
+
+7. Repack ISO: Windows -> System32 -> Sysprep -> Run as Admin: sysPrep -> 
+Settings: OOB, Generalize & Shutdown Settings
+
+8. Storage -> Add WinPE iso virtual drive
+
+9. Boot Virtual Machine but Tap F12 to boot into menu, boot into CD-ROM (WinPE iso file)
+
+10. Run as Admin: command prompt
+dism -h  (help command)
+dism /capture-image -h (help info on command)
+c: (change to drive to be captured)
+dism /capture-image /ImageFile:"D:\install.wim" /CaptureDir:C:\ /Name:Wind10Apps /compress:max
+(begins imaging)
+
+11. Plug in USB, then USB Settings to enable
+
+12. Drag install.wim file over to the USB.
+
+13. Download AnyBurn 
+
+14. Run AnyBurn -> Edit Image file -> Add Windows ISO file -> Sources 
+Remove: install.esd
+Add: install.wim
+Click Next
+
+15. Create ISO image.
+
+16. Create bootable flash drive, then put ISO file on it :)
+Download Rufus & Install 
+Insert Clean USB stick 
+Set "Create a bootable disk using ____" to ISO Image
+Start
+
+17. On un-imaged computer, boot into bios (F12, Boot from USB)
+
+
